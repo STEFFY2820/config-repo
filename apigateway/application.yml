@@ -1,7 +1,9 @@
 server:
-  port: 8080
+  port: 8098
 
 spring:
+  application:
+    name: ntt-apigateway
   cloud:
     gateway:
       discovery:
