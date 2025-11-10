@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: ntt-ms-customers
+          uri: lb://ntt-ms-customers
+          predicates:
+            - Path=/customers/**
+        - id: ntt-ms-accounts
+          uri: lb://ntt-ms-accounts
+          predicates:
+            - Path=/accounts/**
+        - id: ntt-ms-creditcards
+          uri: lb://ntt-ms-creditcards
+          predicates:
+            - Path=/creditCards/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,gateway
